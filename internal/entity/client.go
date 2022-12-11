@@ -39,7 +39,21 @@ func (c *Client) Validate() error {
 	}
 
 	if c.Email == "" {
+		//Poderia fazer uma validação com REGEX por exemplo
 		return errors.New("email is required")
+	}
+
+	return nil
+}
+
+func (c *Client) Update(name string, email string) error {
+	c.Name = name
+	c.Email = email
+	c.UpdatedAt = time.Now()
+	err := c.Validate()
+
+	if err != nil {
+		return err
 	}
 
 	return nil
