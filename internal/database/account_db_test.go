@@ -17,7 +17,7 @@ type AccountDBTestSuite struct {
 }
 
 func (s *AccountDBTestSuite) SetupSuite() {
-	db, err := sql.Open("sqlite3", ":memory")
+	db, err := sql.Open("sqlite3", ":memory:")
 	s.Nil(err)
 	s.db = db
 
