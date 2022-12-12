@@ -45,11 +45,11 @@ func (s *ClientDBTestSuite) TestSave() {
 	s.Nil(err)
 }
 
-func (s *ClientDBTestSuite) TestGet() {
+func (s *ClientDBTestSuite) TestFindByID() {
 	client, _ := entity.NewClient("John Doe", "j@j.com")
 	s.clientDB.Save(client)
 
-	clientDB, err := s.clientDB.Get(client.ID)
+	clientDB, err := s.clientDB.FindByID(client.ID)
 	s.Nil(err)
 	s.Equal(client.ID, clientDB.ID)
 	s.Equal(client.Name, clientDB.Name)
